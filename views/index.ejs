@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Day Of The Week</title>
+    <link rel="stylesheet" href="css/styles.css">
+  </head>
+  <body>
+    <div class="box" id="heading">
+      <h1><%=HeaderContent %></h1>
+    </div>
+
+    <div class="box">
+      <%itemList.forEach(function(doc){ %>
+        <form action="/remove" method="post">
+        <div class="item">
+          <input type="checkbox" name="checkbox" value="<%=doc._id%>" onChange="this.form.submit()" >
+          <p><%=doc.name%></p>
+        </div>
+        <input type="hidden" name="header" value="<%=HeaderContent%>">
+        </form>
+      <% }); %>
+
+      <form class="item" action="/" method="post">
+        <input type="text" name="todo" placeholder="New Item">
+        <button type="submit" name="submit" value="<%=HeaderContent%>">+</button>
+      </form>
+    </div>
+  </body>
+</html>
